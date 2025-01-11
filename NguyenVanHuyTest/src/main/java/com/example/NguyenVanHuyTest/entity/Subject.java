@@ -1,10 +1,7 @@
 package com.example.NguyenVanHuyTest.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 import java.util.List;
 
@@ -15,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Subject {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subject_id")
@@ -31,5 +27,5 @@ public class Subject {
     private Integer credit;
 
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<StudentScore> studentScores;
+    private List<StudentScore> scores;
 }

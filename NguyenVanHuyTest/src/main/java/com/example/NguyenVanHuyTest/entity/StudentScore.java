@@ -1,10 +1,7 @@
 package com.example.NguyenVanHuyTest.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 @Entity
 @Table(name = "student_score_t")
@@ -13,7 +10,6 @@ import lombok.Builder;
 @AllArgsConstructor
 @Builder
 public class StudentScore {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_score_id")
@@ -32,4 +28,13 @@ public class StudentScore {
 
     @Column(name = "score2", precision = 5, scale = 2)
     private Double score2;
+
+    @Transient
+    public String getGrade() {
+        double totalScore = 0.3 * score1 + 0.7 * score2;
+        if (totalScore >= 8.0) return "A";
+        else if (totalScore >= 6.0) return "B";
+        else if (totalScore >= 4.0) return "D";
+        else return "F";
+    }
 }

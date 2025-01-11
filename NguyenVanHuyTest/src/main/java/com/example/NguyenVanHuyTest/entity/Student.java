@@ -15,14 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
-    private Integer studentId;
+    private Integer id;
 
-    @Column(name = "student_code", nullable = false, length = 20)
-    private String studentCode;
+    @Column(name = "student_id")
+    private String studentId;
 
     @Column(name = "full_name", nullable = false, length = 100)
     private String fullName;
@@ -31,5 +29,6 @@ public class Student {
     private String address;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<StudentScore> studentScores;
+    private List<StudentScore> scores;
 }
+

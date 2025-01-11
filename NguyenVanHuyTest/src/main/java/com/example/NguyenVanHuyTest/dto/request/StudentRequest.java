@@ -1,6 +1,5 @@
 package com.example.NguyenVanHuyTest.dto.request;
 
-import com.example.NguyenVanHuyTest.entity.StudentScore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,8 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class StudentRequest {
-    private Integer id;
-    private String studentId;
+    private Integer studentId;
+    private String studentCode;
     private String fullName;
     private String address;
     private List<StudentScoreRequest> scores;

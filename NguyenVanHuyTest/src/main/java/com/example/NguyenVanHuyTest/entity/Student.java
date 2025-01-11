@@ -17,10 +17,11 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
     @Column(name = "student_id")
-    private String studentId;
+    private Integer studentId;
+
+    @Column(name = "student_code")
+    private String studentCode;
 
     @Column(name = "full_name", nullable = false, length = 100)
     private String fullName;

@@ -28,7 +28,7 @@ public class StudentService {
             for (StudentScore score: student.getScores()) {
                 StudentResponse studentResponse = new StudentResponse();
                 Subject subject = score.getSubject();
-                studentResponse.setStudentId(student.getStudentId());
+                studentResponse.setStudentId(student.getStudentCode());
                 studentResponse.setFullName(student.getFullName());
                 studentResponse.setSubjectName(subject.getSubjectName());
                 studentResponse.setScore1(score.getScore1());
@@ -44,7 +44,7 @@ public class StudentService {
     public Student saveStudent(StudentRequest request) {
         Student student = new Student();
         student.setFullName(request.getFullName());
-        student.setStudentId(request.getStudentId());
+        student.setStudentCode(request.getStudentCode());
         student.setAddress(request.getAddress());
         Student savedStudent = studentRepository.save(student);
         List<StudentScoreRequest> scores = request.getScores();
@@ -55,11 +55,11 @@ public class StudentService {
     }
 
     public Student updateStudent(StudentRequest request) {
-        Student student = studentRepository.findById(request.getId()).orElseThrow(
+        Student student = studentRepository.findById(request.getStudentId()).orElseThrow(
                 () -> new RuntimeException("Student not found")
         );
         student.setFullName(request.getFullName());
-        student.setStudentId(request.getStudentId());
+        student.setStudentCode(request.getStudentCode());
         student.setAddress(request.getAddress());
         Student savedStudent = studentRepository.save(student);
         List<StudentScoreRequest> scores = request.getScores();

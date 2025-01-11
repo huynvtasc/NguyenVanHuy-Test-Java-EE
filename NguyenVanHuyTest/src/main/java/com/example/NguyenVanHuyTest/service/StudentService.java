@@ -43,7 +43,21 @@ public class StudentService {
 
     public Student saveStudent(StudentRequest request) {
         Student student = new Student();
-        student.setId(student.getId());
+        student.setFullName(request.getFullName());
+        student.setStudentId(request.getStudentId());
+        student.setAddress(request.getAddress());
+        Student savedStudent = studentRepository.save(student);
+        List<StudentScoreRequest> scores = request.getScores();
+        for (StudentScoreRequest score : scores) {
+            studentScoreService.saveStudentScore(score);
+        }
+        return savedStudent;
+    }
+
+    public Student updateStudent(StudentRequest request) {
+        Student student = studentRepository.findById(request.getId()).orElseThrow(
+                () -> new RuntimeException("Student not found")
+        );
         student.setFullName(request.getFullName());
         student.setStudentId(request.getStudentId());
         student.setAddress(request.getAddress());

@@ -23,5 +23,10 @@ public class StudentController {
     public Student createStudent(@RequestBody StudentRequest student) {
         return studentService.saveStudent(student);
     }
+
+    @PostMapping
+    public Student updateStudent(@RequestBody StudentRequest student) {
+        return studentService.updateStudent(student);
+    }
 }
 

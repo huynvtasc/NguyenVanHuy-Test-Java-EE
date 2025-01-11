@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class StudentRequest {
+    private Integer id;
     private String studentId;
     private String fullName;
     private String address;
